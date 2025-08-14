@@ -326,4 +326,4 @@ const mapToONDC = (products) => {
   };
 };
 
-module.exports = { mapToONDC };
+module.exports = { mapToONDC, getMeta };
