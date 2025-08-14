@@ -119,4 +119,4 @@ See the `.env.example` file for a complete list of configuration options.
 
 ## License
 
-ISC License
+ISC License# woocommerce-adaptor
