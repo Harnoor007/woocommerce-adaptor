@@ -5,7 +5,7 @@ require('dotenv').config();
 class WooCommerceAPI {
     constructor() {
         logger.info('Initializing WooCommerce API');
-        
+
         if (!process.env.WOO_BASE_URL || !process.env.WOO_CONSUMER_KEY || !process.env.WOO_CONSUMER_SECRET) {
             throw new Error('Missing required WooCommerce configuration');
         }
@@ -18,6 +18,17 @@ class WooCommerceAPI {
             queryStringAuth: true
         });
     }
+
+    async testConnection() {
+        try {
+            const res = await this.api.get('products', { per_page: 1 });
+            return res.status === 200;
+        } catch (err) {
+            logger.error('WooCommerce test connection failed', { error: err.message });
+            return false;
+        }
+    }
+
 
     async findProductBySku(sku) {
         try {
@@ -106,9 +117,9 @@ class WooCommerceAPI {
             logger.info('Confirming order', { orderId });
             return await this.updateOrder(orderId, {
                 status: 'processing',
-                meta_data: [{ 
-                    key: 'confirmation_time', 
-                    value: new Date().toISOString() 
+                meta_data: [{
+                    key: 'confirmation_time',
+                    value: new Date().toISOString()
                 }]
             });
         } catch (error) {

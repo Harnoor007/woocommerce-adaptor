@@ -7,8 +7,8 @@ const wooCommerceAPI = require('./utils/wooCommerceAPI');
 const config = require('./utils/config');
 const logger = require('./utils/logger');
 const { errorHandler } = require('./utils/errorHandler');
-const { verifyAuthentication } = require('./auth/authMiddleware');
-const webhookController = require('./controllers/webhookController');
+// const { verifyAuthentication } = require('./auth/authMiddleware');
+// const webhookController = require('./controllers/webhookController');
 
 // Import routes
 const selectRoutes = require("./routes/selectRoutes");
@@ -108,7 +108,7 @@ app.use('/api/v1/cancel', cancelRoutes);
 app.use('/api/v1/on_cancel', onCancelRoutes);
 
 // Add webhook routes
-app.post('/webhook/on_init', webhookController.handleOnInit);
+// app.post('/webhook/on_init', webhookController.handleOnInit);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

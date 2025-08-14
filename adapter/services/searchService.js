@@ -48,8 +48,8 @@ const searchByCity = async ({ category, city }) => {
     
     logger.info(`Mapped city code "${city}" to "${cityName}"`);
     
-    // DEVELOPMENT MODE: Use sample data
-    if (process.env.NODE_ENV !== 'production') {
+    // DEVELOPMENT MODE: Use sample data (only if explicitly set)
+    if (process.env.NODE_ENV === 'development') {
       logger.info(`[DEV MODE] Fetching products from sample data for city: ${cityName}, category: ${category?.id || 'all'}`);
       
       const filePath = path.join(__dirname, '../Data/search.json');
@@ -103,10 +103,10 @@ const searchByCity = async ({ category, city }) => {
       stock_status: 'instock' // Only in-stock products
     });
     
-    // Add category filter if provided
-    if (category && category.id) {
-      queryParams.append('category', category.id);
-    }
+    // Add category filter if provided (commented out for now to return all products)
+    // if (category && category.id) {
+    //   queryParams.append('category', category.id);
+    // }
     
     // Construct authentication parameters
     queryParams.append('consumer_key', WOO_CONSUMER_KEY);

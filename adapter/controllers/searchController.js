@@ -31,7 +31,6 @@ const handleSearchRequest = async (req, res) => {
       }
       
       const onSearchResponse = await sendOnSearchResponse(context, message);
-      
       logger.info("Search response processed (not sent to BAP)", { 
         transactionId: context.transaction_id 
       });

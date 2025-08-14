@@ -4,7 +4,7 @@ const wooCommerceAPI = require("../utils/wooCommerceAPI");
 const fs = require("fs").promises;
 const path = require("path");
 const chargesMiddleware = require("../middleware/chargesMiddleware");
-const fulfillmentService = require("../services/fulfillmentService");
+const fulfillmentService = require("../services/fullfillmentService");
 
 /**
  * Get product details from WooCommerce

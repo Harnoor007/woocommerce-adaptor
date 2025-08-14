@@ -1,5 +1,5 @@
 const logger = require('./logger');
-const authRequestClient = require('../auth/authRequestClient');
+// const authRequestClient = require('../auth/authRequestClient');
 const wooCommerceAPI = require('./wooCommerceAPI');
 
 /**
